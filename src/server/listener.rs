@@ -16,6 +16,16 @@ pub struct ServerCallbacks {
     pub on_message: Option<fn(uuid::Uuid, String)>,
 }
 
+impl Default for ServerCallbacks {
+    fn default() -> Self {
+        ServerCallbacks {
+            on_connect: None,
+            on_disconnect: None,
+            on_message: None,
+        }
+    }
+}
+
 /// Run server
 pub async fn start_server(addr: &str, registry: ClientRegistry, cb: ServerCallbacks) -> Result<()> {
     let token = load_or_create_token();  // load once

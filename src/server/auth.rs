@@ -31,3 +31,14 @@ pub fn load_or_create_token() -> String {
 
     token
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn token_generated_is_32_chars() {
+        let token = load_or_create_token();
+        assert_eq!(token.len(), 32);
+    }
+}

@@ -1,6 +1,4 @@
-mod server;
-
-use server::{create_registry, listener::{start_server, ServerCallbacks}};
+use tcp_server_rust::server::{create_registry, listener::{start_server, ServerCallbacks}};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -12,5 +10,6 @@ async fn main() -> anyhow::Result<()> {
         on_message: Some(|id,msg| println!("Message from {} => {}", id,msg)),
     };
 
+    // Start the server (async)
     start_server("127.0.0.1:9000", registry, callbacks).await
 }
