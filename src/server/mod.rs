@@ -1,5 +1,6 @@
 pub mod listener;
 pub mod client;
+pub mod auth;
 
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;

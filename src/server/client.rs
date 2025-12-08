@@ -15,4 +15,5 @@ pub struct ClientInfo {
 pub struct Handshake {
     pub name: Option<String>,
     pub role: String,
+    pub token: String, 
 }
