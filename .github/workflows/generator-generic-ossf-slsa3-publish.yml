@@ -1,0 +1,31 @@
+name: Rust-TCP-Server CI (Windows)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Cache cargo registry
+        uses: actions-rs/cargo@v1
+        with:
+          command: fetch
+
+      - name: Build headless
+        run: cargo build --workspace --all-targets --no-default-features
+
+      - name: Run headless tests
+        run: cargo test --workspace --all --no-default-features -- --nocapture
