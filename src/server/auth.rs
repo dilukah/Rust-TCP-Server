@@ -26,7 +26,7 @@ pub fn load_or_create_token() -> String {
     let file_content = format!("[auth]\ntoken=\"{}\"", token);
     fs::write(path, file_content).unwrap();
 
-    println!("🔐 No token found — generated new config/settings.toml");
+    println!("No token found — generated new config/settings.toml");
     println!("Token: {}", token);
 
     token
